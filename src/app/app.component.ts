@@ -41,4 +41,9 @@ export class AppComponent implements OnInit {
   getActivePlayers(): Player[] {
     return this.team.getActivePlayers();
   }
+
+  logActivePlayers(): void {
+    this.team.logActivePlayers();
+
+  }
 }
