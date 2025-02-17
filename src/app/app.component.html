@@ -1,27 +1,20 @@
 <h1>{{team.teamName}}</h1>
 
-<!-- List of players with options to toggle active status or remove player -->
-<ol>
-    <li *ngFor="let player of team.players; let i = index">
-      {{player.name}}<br>
-      Jersey: {{player.jersey}} |
-      Activity: {{player.active}}
+<ul *ngFor="let player of team.players; let i = index">
+  <li> Player: {{player.name}} <br>
+    Jersey: #{{player.jersey}}<br>
+    Activity: {{player.active}}<br>
+    <button *ngIf="!player.active" (click)="setActive(i, !player.active)">Change to active status</button>
+    <button (click)="removePlayer(i)">Remove player from team</button>
+  </li>
+</ul>
 
-      <!-- Button to toggle player's active status -->
-      <button *ngIf ="!player.active" (click)="setActive(i, !player.active)">Change to active status</button>
+<p>Total players on team: {{getPlayerCount()}}</p>
 
-      <button (click)="removePlayer(i)">Remove player from team</button>
-    </li>
-</ol>
-
-<!-- Display Player Count -->
-<p>Total players: {{ getPlayerCount() }}</p>
-
-<!-- Display active players -->
 <h2>Active Players</h2>
 <ul>
   <li *ngFor="let player of getActivePlayers()">
-    {{ player.name }}
+    {{player.name}}
   </li>
 </ul>
 
